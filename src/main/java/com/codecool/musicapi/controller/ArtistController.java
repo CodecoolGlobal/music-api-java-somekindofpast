@@ -1,11 +1,10 @@
 package com.codecool.musicapi.controller;
 
+import com.codecool.musicapi.DTO.ArtistDTO;
 import com.codecool.musicapi.entity.Artist;
 import com.codecool.musicapi.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,4 +27,10 @@ public class ArtistController {
     public Optional<Artist> findById(@PathVariable("id") Long id) {
         return artistService.findById(id);
     }
+
+    @PostMapping("/artists")
+    public Artist save(@RequestBody ArtistDTO artist) { return artistService.save(artist); }
+
+    @PutMapping("/artist/{id}")
+    public Artist update(@PathVariable("id") Long id, @RequestBody ArtistDTO artist) { return artistService.update(id, artist); }
 }

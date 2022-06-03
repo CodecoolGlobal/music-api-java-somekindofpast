@@ -5,8 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SongDTO {
+public class PlaylistDTO {
     private String title;
-    private Long genre_id;
-    private Long album_id;
+    private List<Long> songIds;
 }

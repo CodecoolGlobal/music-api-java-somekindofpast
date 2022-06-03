@@ -29,8 +29,11 @@ public class SongController {
     }
 
     @PostMapping("/songs")
-    public Song save(@RequestBody SongDTO song) { return songService.save(song); } //@ModelAttribute
+    public Song save(@RequestBody SongDTO song) { return songService.save(song); }
 
-    @PutMapping("/song/{id}")//(value = "/song/{id}", consumes = {"application/json;charset=UTF-8"})
-    public Song update(@PathVariable("id") Long id, @RequestBody String title) { return songService.update(id, title); }
+    @PutMapping("/song/{id}")
+    public Song update(@PathVariable("id") Long id, @RequestBody SongDTO song) { return songService.update(id, song); }
+
+    @DeleteMapping("/song/{id}")
+    public void delete(@PathVariable("id") Long id) { songService.delete(id); }
 }
